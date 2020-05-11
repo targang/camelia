@@ -1,0 +1,12 @@
+.navbar-toggler:focus {
+    outline: none;
+}
+.btn-primary{
+    background-color: #800000 !important;
+    border: #800000 2px solid !important;
+}
+.btn-primary:hover {
+    color: #800000;
+    background-color: white !important;
+    border: #800000 2px solid !important;
+}
