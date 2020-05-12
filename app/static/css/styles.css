@@ -10,3 +10,9 @@
     background-color: white !important;
     border: #800000 2px solid !important;
 }
+.navbar {
+    transition: top 0.5s ease;
+}
+.navbar-hide {
+    top: -108px;
+}
