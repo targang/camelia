@@ -32,3 +32,23 @@ def index():
 @app.route('/oformlenie-zakaza')
 def howto():
     return render_template('footer/howto.html')
+
+@app.route('/delivery-terms')
+def delivery_terms():
+    return render_template('footer/delivery.html')
+
+@app.route('/return-conditions')
+def return_conditions():
+    return render_template('footer/return.html')
+    
+@app.route('/public-offer')
+def public_offer():
+    return render_template('footer/offer.html')
+
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('footer/privacy.html')
+
+@app.route('/concent')
+def concent():
+    return render_template('footer/concent.html')
