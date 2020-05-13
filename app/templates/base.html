@@ -20,13 +20,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div class="container">
             <div class="navbar-brand flex-column">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <h3>Camelia Flowers</h3>
                 </a>
                 <hr class="my-0">
@@ -72,27 +73,53 @@
                     </ul>
                     <ul class="navbar-nav justify-content-around mt-lg-2">
                         <li class="nav-item {% block shop_active %}{% endblock shop_active %}">
-                            <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('shop') }}">Магазин</a>
+                            <a class="nav-link font-weight-bolder text-uppercase"
+                                href="{{ url_for('shop') }}">Магазин</a>
                         </li>
                         <li class="nav-item {% block cart_active %}{% endblock cart_active %}">
-                            <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('cart') }}">Корзина</a>
+                            <a class="nav-link font-weight-bolder text-uppercase"
+                                href="{{ url_for('cart') }}">Корзина</a>
                         </li>
                         <li class="nav-item {% block order_active %}{% endblock order_active %}">
-                            <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('shop') }}">Оформление заказа</a>
+                            <a class="nav-link font-weight-bolder text-uppercase"
+                                href="{{ url_for('shop') }}">Оформление заказа</a>
                         </li>
                         <li class="nav-item {% block cabinet_active %}{% endblock cabinet_active %}">
-                            <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('shop') }}">Личный кабинет</a>
+                            <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('shop') }}">Личный
+                                кабинет</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="container py-4">
-        {% block main %}
-        
-        {% endblock main %}
-    </div>
+    {% block main %}
+
+    {% endblock main %}
+    <footer class="footer">
+        <div style="background-color: #313131;">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <a class="footer-link" href="#">Как оформить заказ</a><br>
+                        <a class="footer-link" href="#">Условия доставки</a><br>
+                        <a class="footer-link" href="#">Условия возврата</a><br>
+                    </div>
+                    <div class="col-sm-6 col-md-9">
+                        <a class="footer-link" href="#">Публичная оферта</a><br>
+                        <a class="footer-link" href="#">Положение об обработке персональных данных</a><br>
+                        <a class="footer-link" href="#">Согласие</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #282828;">
+            <div class="container py-3" style="color: #777777;font-size: small;">
+                <p style="margin-bottom: 10px;">© 2020 <a class="footer-link" href="/">Camelia Flowers</a> – Все права защищены</p>
+                <p style="margin-bottom: 10px;">Designed by <a class="footer-link" href="/">Amema Studio</a></p>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

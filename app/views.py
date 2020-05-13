@@ -24,3 +24,11 @@ def cart():
 @app.route('/add_to_cart', methods=['POST'])
 def add_to_cart():
     pass
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/oformlenie-zakaza')
+def howto():
+    return render_template('footer/howto.html')
