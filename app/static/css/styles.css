@@ -43,3 +43,6 @@
     #bc1888 100%
   );
 }
+.product-img {
+  max-width: 400px;
+}

@@ -40,5 +40,5 @@ class LoginForm(FlaskForm):
 
 class AddToCartForm(FlaskForm):
     product_id = HiddenField()
-    product_count = IntegerField("Количество", validators=[DataRequired()], widget=NumberInput(min=0), render_kw={"style": "width: 50px"})
+    product_count = IntegerField("Количество", validators=[DataRequired()], widget=NumberInput(min=1), render_kw={"style": "width: 70px"})
     submit_add = SubmitField("Добавить в корзину")
