@@ -1,4 +1,4 @@
-from flask import render_template, request, session
+from flask import render_template, request, session, jsonify
 from flask_babelex import Babel
 
 from . import app
@@ -6,6 +6,16 @@ from .forms import RegisterForm, LoginForm, AddToCartForm
 from .models import Product
 
 babel = Babel(app)
+
+sqla_jsonify = lambda model: {
+    c.name: str(getattr(model, c.name)) for c in model.__table__.columns
+}
+
+
+@app.context_processor
+def inject_cart_count():
+    cart_count = len(session["cart"]) if "cart" in session else 0
+    return dict(cart_count=cart_count)
 
 
 @babel.localeselector
@@ -29,7 +39,28 @@ def cart():
 
 @app.route("/add_to_cart", methods=["POST"])
 def add_to_cart():
-    pass
+    product_id = int(request.form["product_id"])
+    product_count = int(request.form["product_count"])
+    if "cart" in session:
+        try:
+            toput = session["cart"]
+            toput[product_id]["count"] += product_count
+            session["cart"] = toput
+        except:
+            toput = session["cart"]
+            toput[product_id] = {
+                "product": sqla_jsonify(Product.query.get(product_id)),
+                "count": product_count,
+            }
+            session["cart"] = toput
+    else:
+        session["cart"] = {
+            product_id: {
+                "product": sqla_jsonify(Product.query.get(product_id)),
+                "count": product_count,
+            }
+        }
+    return jsonify({"status": "success", "data": session["cart"]}), 200
 
 
 @app.route("/")

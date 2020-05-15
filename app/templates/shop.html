@@ -41,7 +41,7 @@
                 </div>
                 <h4 class="modal-title text-center mb-3"></h4>
                 <p class="modal-text text-center"></p>
-                <form method="post">
+                <form id="addToCartForm" method="POST" action="{{ url_for('add_to_cart') }}">
                     {{ cart_form.hidden_tag() }}
                     <div class="d-flex justify-content-center">
                         <div class="flex-column mr-2">
@@ -61,14 +61,30 @@
 {% block scripts %}
 <script>
     $(".add-cart").click(function () {
-        $("#cart-count").text(parseInt($("#cart-count").text()) + 1);
+        // $("#cart-count").text(parseInt($("#cart-count").text()) + 1);
         $(".modal-title").text($(this).parent().find("h4").text());
         $(".modal-text").data("price", $(this).parent().find("p").data("price"))
         $(".modal-text").text((parseInt($(this).parent().find("p").data("price")) * parseInt($("#product_count").val())).toString() + ",00₽");
+        $("#product_id").val($(this).parent().data("id"))
         $("#cardModalImg").attr("src", $(this).parent().parent().find('img').attr('src'));
     })
     $("#product_count").change(function () {
         $(".modal-text").text((parseInt($(".modal-text").data("price")) * parseInt($(this).val())).toString() + ",00₽");
     })
 </script>
+<!--<script>
+    $("#AddToCartForm").submit(function (e) {
+        e.preventDefault();
+        var url = "{{ url_for('add_to_cart') }}",
+            data = $(this).serialize();
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: data,
+            success: function () {
+                //whatever you wanna do after the form is successfully submitted
+            }
+        });
+    })
+</script>-->
 {% endblock scripts %}

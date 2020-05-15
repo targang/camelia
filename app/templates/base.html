@@ -83,7 +83,7 @@
                         </li>
                         <li class="nav-item {% block cart_active %}{% endblock cart_active %}">
                             <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('cart') }}">Корзина
-                                <span class="badge badge-pill badge-danger" id="cart-count">0</span></a>
+                                <span class="badge badge-pill badge-danger" id="cart-count">{{ cart_count }}</span></a>
                         </li>
                         <li class="nav-item {% block order_active %}{% endblock order_active %}">
                             <a class="nav-link font-weight-bolder text-uppercase"
@@ -140,6 +140,17 @@
         $(document).on('click', '[data-toggle="lightbox"]', function (event) {
             event.preventDefault();
             $(this).ekkoLightbox();
+        });
+    </script>
+    <script type="text/javascript">
+        var csrf_token = "{{ csrf_token() }}";
+    
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrf_token);
+                }
+            }
         });
     </script>
     {% block scripts %}
