@@ -82,15 +82,15 @@
                                 href="{{ url_for('shop') }}">Магазин</a>
                         </li>
                         <li class="nav-item {% block cart_active %}{% endblock cart_active %}">
-                            <a class="nav-link font-weight-bolder text-uppercase"
-                                href="{{ url_for('cart') }}">Корзина</a>
+                            <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('cart') }}">Корзина
+                                <span class="badge badge-pill badge-danger" id="cart-count">0</span></a>
                         </li>
                         <li class="nav-item {% block order_active %}{% endblock order_active %}">
                             <a class="nav-link font-weight-bolder text-uppercase"
                                 href="{{ url_for('shop') }}">Оформление заказа</a>
                         </li>
                         <li class="nav-item {% block cabinet_active %}{% endblock cabinet_active %}">
-                            <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('shop') }}">Личный
+                            <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('auth') }}">Личный
                                 кабинет</a>
                         </li>
                     </ul>
@@ -98,10 +98,11 @@
             </div>
         </div>
     </nav>
-    {% block main %}
+    <main>
+        {% block main %}
 
-    {% endblock main %}
-
+        {% endblock main %}
+    </main>
     <footer class="footer">
         <div style="background-color: #313131;">
             <div class="container py-5">
@@ -130,8 +131,10 @@
         </div>
     </footer>
     <script>
-        if ($(document).height() <= $(window).height())
-            $("footer.footer").addClass("fixed-bottom");
+        $(window).on('load', function () {
+            if ($(document).height() <= $(window).height())
+                $("footer.footer").addClass("fixed-bottom");
+        });
     </script>
     <script>
         $(document).on('click', '[data-toggle="lightbox"]', function (event) {
@@ -139,6 +142,9 @@
             $(this).ekkoLightbox();
         });
     </script>
+    {% block scripts %}
+
+    {% endblock scripts %}
 </body>
 
 </html>

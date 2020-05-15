@@ -16,7 +16,15 @@ class ProductView(ModelView):
     form_extra_fields = {
         "image": ImageUploadField("Изображение", base_path=app.static_folder)
     }
-    form_widget_args = {"imagepath": {"readonly": True}}
+    form_widget_args = {"imagepath": {"readonly": True, "style": "visibility: hidden"}}
+    column_labels = {
+        "imagepath": "",
+        "vendor_code": "Артикул",
+        "title": "Название",
+        "description": "Описание",
+        "price": "Цена",
+        "weight": "Вес",
+    }
 
     def _change_path_data(self, _form):
         try:
@@ -24,11 +32,11 @@ class ProductView(ModelView):
 
             if storage_file is not None:
                 ext = storage_file.filename.split(".")[-1]
-                path = f"{_form.title.data}-image.{ext}"
+                path = f"{_form.vendor_code.data}-image.{ext}"
 
-                savedpath = os.path.join(app.static_folder, "img\\", path)
+                savedpath = os.path.join(app.static_folder, "img", "products", path)
                 storage_file.save(savedpath)
-                _form.imagepath.data = savedpath
+                _form.imagepath.data = f"img/products/{path}"
 
                 del _form.image
 
@@ -44,5 +52,5 @@ class ProductView(ModelView):
         return self._change_path_data(super(ProductView, self).create_form(obj))
 
 
-admin.add_view(ProductView(Product, db.session))
-admin.add_view(ModelView(Category, db.session))
+admin.add_view(ProductView(Product, db.session, name="Товары"))
+admin.add_view(ModelView(Category, db.session, name="Категории"))
