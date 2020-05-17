@@ -132,7 +132,9 @@
 {% block scripts %}
 <script>
     $(".remove-cart").click(function () {
-        $.post("{{ url_for('remove_from_cart') }}", { product_id: $(this).parent().parent().data("id") });
+        $.post("{{ url_for('remove_from_cart') }}", { product_id: $(this).parent().parent().data("id") }, function (data) {
+            $("#cart-count").text(data.responce.count);
+        });
         $(this).parent().parent().fadeOut(300, function () {
             $(this).remove();
             if ($("tbody").has("tr").length == 1) {

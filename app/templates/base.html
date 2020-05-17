@@ -81,10 +81,9 @@
                         </li>
                         <li class="nav-item {% block cart_active %}{% endblock cart_active %}">
                             <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('cart') }}">Корзина
-                                {% if cart_count %}
-                                <span class="badge badge-pill badge-danger" id="cart-count">{{ cart_count }}</span>
-                                {% endif %}
-                                </a>
+                                <span class="badge badge-pill badge-danger"
+                                    id="cart-count">{% if cart_count %}{{ cart_count }}{% endif %}</span>
+                            </a>
                         </li>
                         <li class="nav-item {% block order_active %}{% endblock order_active %}">
                             <a class="nav-link font-weight-bolder text-uppercase"
@@ -142,13 +141,6 @@
             event.preventDefault();
             $(this).ekkoLightbox();
         });
-    </script>
-    <script>
-        function updateCartCount() {
-            $.get("{{ url_for('count_cart') }}", function(data) {
-                $("#cart-count").text(data.responce.count);
-            });
-        }
     </script>
     <!--<script type="text/javascript">
         var csrf_token = "{# csrf_token() #}";

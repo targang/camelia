@@ -40,12 +40,6 @@ def cart():
     return render_template("cart.html", cart=cart)
 
 
-@app.route("/cart_count", methods=["GET"])
-def count_cart():
-    cart_count = len(session["cart"]) if "cart" in session else None
-    return jsonify(status="success", responce=dict(count=cart_count)), 200
-
-
 @app.route("/add_to_cart", methods=["POST"])
 def add_to_cart():
     product_id = request.form["product_id"]
@@ -58,8 +52,8 @@ def add_to_cart():
         session.modified = True
     else:
         session["cart"] = {product_id: product_count}
-    print(session["cart"])
-    return jsonify({"status": "success"}), 200
+    count = len(session["cart"])
+    return jsonify({"status": "success", "responce": {"count": count}}), 200
 
 
 @app.route("/remove_from_cart", methods=["POST"])
@@ -69,7 +63,8 @@ def remove_from_cart():
         if product_id in session["cart"]:
             del session["cart"][product_id]
             session.modified = True
-            return jsonify({"status": "success"}), 200
+            count = len(session["cart"])
+            return jsonify({"status": "success", "responce": {"count": count}}), 200
     return (
         jsonify({"status": "error", "error": {"code": 404, "message": "ID not found"}}),
         404,

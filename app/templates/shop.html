@@ -5,7 +5,6 @@
 {% block shop_active %}active{% endblock shop_active %}
 
 {% block main %}
-<iframe name="submframe" id="submframe" style="display: none;"></iframe>
 
 <div class="container py-4" style="margin-top: 108px;">
 
@@ -43,7 +42,7 @@
                 </div>
                 <h4 class="modal-title text-center mb-3"></h4>
                 <p class="modal-text text-center"></p>
-                <form id="addToCartForm" method="POST" action="{{ url_for('add_to_cart') }}" target="submframe">
+                <form id="addToCartForm">
                     {{ cart_form.hidden_tag() }}
                     <div class="d-flex justify-content-center">
                         <div class="flex-column mr-2">
@@ -63,7 +62,6 @@
 {% block scripts %}
 <script>
     $(".add-cart").click(function () {
-        // $("#cart-count").text(parseInt($("#cart-count").text()) + 1);
         $(".modal-title").text($(this).parent().find("h4").text());
         $(".modal-text").data("price", $(this).parent().find("p").data("price"))
         $(".modal-text").text((parseInt($(this).parent().find("p").data("price")) * parseInt($("#product_count").val())).toString() + ",00₽");
@@ -75,8 +73,13 @@
     })
 </script>
 <script>
-    $("#submit_add").click(function () {
-        $("#addCartModal > div > div > div.modal-header > button").click();
+    $("#addToCartForm").submit(function (e) {
+        e.preventDefault();
+        $.post("{{ url_for('add_to_cart') }}", $(this).serialize(), function (data) {
+            $("#cart-count").text(data.responce.count);
+        });
+        $("#product_count").val("1");
+        $("#addCartModal").modal("hide");
         $('.navbar').removeClass("navbar-hide");
     })
 </script>
