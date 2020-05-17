@@ -5,6 +5,8 @@
 {% block shop_active %}active{% endblock shop_active %}
 
 {% block main %}
+<iframe name="submframe" id="submframe" style="display: none;"></iframe>
+
 <div class="container py-4" style="margin-top: 108px;">
 
     <h2 class="mb-4">Магазин</h2>
@@ -41,7 +43,7 @@
                 </div>
                 <h4 class="modal-title text-center mb-3"></h4>
                 <p class="modal-text text-center"></p>
-                <form id="addToCartForm" method="POST" action="{{ url_for('add_to_cart') }}">
+                <form id="addToCartForm" method="POST" action="{{ url_for('add_to_cart') }}" target="submframe">
                     {{ cart_form.hidden_tag() }}
                     <div class="d-flex justify-content-center">
                         <div class="flex-column mr-2">
@@ -72,19 +74,10 @@
         $(".modal-text").text((parseInt($(".modal-text").data("price")) * parseInt($(this).val())).toString() + ",00₽");
     })
 </script>
-<!--<script>
-    $("#AddToCartForm").submit(function (e) {
-        e.preventDefault();
-        var url = "{{ url_for('add_to_cart') }}",
-            data = $(this).serialize();
-        $.ajax({
-            url: url,
-            type: 'post',
-            data: data,
-            success: function () {
-                //whatever you wanna do after the form is successfully submitted
-            }
-        });
+<script>
+    $("#submit_add").click(function () {
+        $("#addCartModal > div > div > div.modal-header > button").click();
+        $('.navbar').removeClass("navbar-hide");
     })
-</script>-->
+</script>
 {% endblock scripts %}

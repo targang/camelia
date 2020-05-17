@@ -13,7 +13,7 @@ from wtforms.widgets.html5 import NumberInput
 
 from . import app
 
-csrf = CSRFProtect(app)
+# csrf = CSRFProtect(app)
 
 
 class RegisterForm(FlaskForm):

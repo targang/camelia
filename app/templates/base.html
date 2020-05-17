@@ -12,9 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
@@ -83,7 +81,10 @@
                         </li>
                         <li class="nav-item {% block cart_active %}{% endblock cart_active %}">
                             <a class="nav-link font-weight-bolder text-uppercase" href="{{ url_for('cart') }}">Корзина
-                                <span class="badge badge-pill badge-danger" id="cart-count">{{ cart_count }}</span></a>
+                                {% if cart_count %}
+                                <span class="badge badge-pill badge-danger" id="cart-count">{{ cart_count }}</span>
+                                {% endif %}
+                                </a>
                         </li>
                         <li class="nav-item {% block order_active %}{% endblock order_active %}">
                             <a class="nav-link font-weight-bolder text-uppercase"
@@ -142,8 +143,15 @@
             $(this).ekkoLightbox();
         });
     </script>
-    <script type="text/javascript">
-        var csrf_token = "{{ csrf_token() }}";
+    <script>
+        function updateCartCount() {
+            $.get("{{ url_for('count_cart') }}", function(data) {
+                $("#cart-count").text(data.responce.count);
+            });
+        }
+    </script>
+    <!--<script type="text/javascript">
+        var csrf_token = "{# csrf_token() #}";
     
         $.ajaxSetup({
             beforeSend: function(xhr, settings) {
@@ -152,7 +160,7 @@
                 }
             }
         });
-    </script>
+    </script>-->
     {% block scripts %}
 
     {% endblock scripts %}

@@ -7,14 +7,10 @@ from .models import Product
 
 babel = Babel(app)
 
-sqla_jsonify = lambda model: {
-    c.name: str(getattr(model, c.name)) for c in model.__table__.columns
-}
-
 
 @app.context_processor
 def inject_cart_count():
-    cart_count = len(session["cart"]) if "cart" in session else 0
+    cart_count = len(session["cart"]) if "cart" in session else None
     return dict(cart_count=cart_count)
 
 
@@ -34,33 +30,50 @@ def shop():
 
 @app.route("/cart")
 def cart():
-    return render_template("cart.html")
+    s_cart = session.get("cart")
+    cart = {}
+    for key, value in s_cart.items():
+        product = Product.query.get(int(key))
+        title = product.title
+        price = product.price
+        cart[key] = {"title": title, "price": price, "count": value}
+    return render_template("cart.html", cart=cart)
+
+
+@app.route("/cart_count", methods=["GET"])
+def count_cart():
+    cart_count = len(session["cart"]) if "cart" in session else None
+    return jsonify(status="success", responce=dict(count=cart_count)), 200
 
 
 @app.route("/add_to_cart", methods=["POST"])
 def add_to_cart():
-    product_id = int(request.form["product_id"])
+    product_id = request.form["product_id"]
     product_count = int(request.form["product_count"])
     if "cart" in session:
-        try:
-            toput = session["cart"]
-            toput[product_id]["count"] += product_count
-            session["cart"] = toput
-        except:
-            toput = session["cart"]
-            toput[product_id] = {
-                "product": sqla_jsonify(Product.query.get(product_id)),
-                "count": product_count,
-            }
-            session["cart"] = toput
+        if not product_id in session["cart"].keys():
+            session["cart"][product_id] = product_count
+        else:
+            session["cart"][product_id] += product_count
+        session.modified = True
     else:
-        session["cart"] = {
-            product_id: {
-                "product": sqla_jsonify(Product.query.get(product_id)),
-                "count": product_count,
-            }
-        }
-    return jsonify({"status": "success", "data": session["cart"]}), 200
+        session["cart"] = {product_id: product_count}
+    print(session["cart"])
+    return jsonify({"status": "success"}), 200
+
+
+@app.route("/remove_from_cart", methods=["POST"])
+def remove_from_cart():
+    product_id = request.form["product_id"]
+    if "cart" in session:
+        if product_id in session["cart"]:
+            del session["cart"][product_id]
+            session.modified = True
+            return jsonify({"status": "success"}), 200
+    return (
+        jsonify({"status": "error", "error": {"code": 404, "message": "ID not found"}}),
+        404,
+    )
 
 
 @app.route("/")
