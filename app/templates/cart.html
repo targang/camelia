@@ -15,7 +15,7 @@
                 <tr>
                     <th scope="col">Товар</th>
                     <th scope="col">Цена</th>
-                    <th scope="col">Кол&#8209;во</th>
+                    <th scope="col">Кол-во</th>
                     <th scope="col">Сумма</th>
                     <th scope="col"></th>
                 </tr>
@@ -133,7 +133,13 @@
 <script>
     $(".remove-cart").click(function () {
         $.post("{{ url_for('remove_from_cart') }}", { product_id: $(this).parent().parent().data("id") }, function (data) {
-            $("#cart-count").text(data.responce.count);
+            if (parseInt(data.responce.count) != 0) {
+                $("#cart-count").text(data.responce.count);
+                $("#nav-noti").removeClass("d-none");
+            } else {
+                $("#cart-count").text("");
+                $("#nav-noti").addClass("d-none");
+            }
         });
         $(this).parent().parent().fadeOut(300, function () {
             $(this).remove();

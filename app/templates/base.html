@@ -46,8 +46,10 @@
             </div>
 
             <button class="navbar-toggler navbar-toggler-right align-self-center border-0" type="button"
-                data-toggle="collapse" data-target="#navbarCollapse">
+                data-toggle="collapse" data-target="#navbarCollapse" style="position: relative;">
                 <span class="navbar-toggler-icon"></span>
+                <div id="nav-noti" style="width: 8px;height:8px;position: absolute;right: 12px;bottom: 6px;"
+                    class="rounded-circle bg-danger {% if not cart_count %}d-none{% endif %}"></div>
             </button>
             <div class="collapse navbar-collapse flex-column ml-lg-0 ml-3 mt-1 mt-lg-0" id="navbarCollapse">
                 <div class="flex-column ml-auto">

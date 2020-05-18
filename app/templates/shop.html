@@ -76,7 +76,13 @@
     $("#addToCartForm").submit(function (e) {
         e.preventDefault();
         $.post("{{ url_for('add_to_cart') }}", $(this).serialize(), function (data) {
-            $("#cart-count").text(data.responce.count);
+            if (parseInt(data.responce.count) != 0) {
+                $("#cart-count").text(data.responce.count);
+                $("#nav-noti").removeClass("d-none");
+            } else {
+                $("#cart-count").text("");
+                $("#nav-noti").addClass("d-none");
+            }
         });
         $("#product_count").val("1");
         $("#addCartModal").modal("hide");
