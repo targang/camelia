@@ -63,9 +63,9 @@
     https://camelia-flowers.ru/wp-content/uploads/2020/04/flowers.webp);">
     <div class="py-lg-3 py-md-2" style="background-color: rgba(255, 255, 255, 0.7)">
         <div class="container py-4" style="color: #800000;">
-            <h1 class="text-center pb-5">Преимущества зефирной глины<br>Camelia Flowers Soft</h1>
+            <h1 class="text-center">Преимущества зефирной глины<br>Camelia Flowers Soft</h1>
             <div class="row py-4">
-                <div class="col-md-6 order-md-last">
+                <div class="col-md-6 pb-3 order-md-last">
                     <a href="{{ url_for('static', filename='img/features/composition1.jpg') }}" data-toggle="lightbox">
                         <img height="300px" class="border shadow rounded-lg mx-auto d-block"
                             src="{{ url_for('static', filename='img/features/composition1.jpg') }}" alt="Композиция">
@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="row py-4">
-                <div class="col-md-6">
+                <div class="col-md-6 pb-3">
                     <a href="{{ url_for('static', filename='img/features/composition2.jpg') }}" data-toggle="lightbox">
                         <img height="300px" class="border shadow rounded-lg mx-auto d-block"
                             src="{{ url_for('static', filename='img/features/composition2.jpg') }}" alt="Композиция">
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="row py-4">
-                <div class="col-md-6 order-md-last">
+                <div class="col-md-6 pb-3 order-md-last">
                     <a href="{{ url_for('static', filename='img/features/toys.jpg') }}" data-toggle="lightbox">
                         <img height="300px" class="border shadow rounded-lg mx-auto d-block"
                             src="{{ url_for('static', filename='img/features/toys.jpg') }}" alt="Композиция">
@@ -113,44 +113,50 @@
 
 <div class="container py-5" style="color: #800000;">
     <h1 class="text-center">Нас рекомендуют</h1>
-    <div class="card-group">
+    <div class="row">
 
-        <div class="card border-0">
-            <div class="card-body">
-                <div class="recommend-img rounded-circle mx-auto">
-                    <img class="rounded-circle mx-auto d-block"
-                        src="{{ url_for('static', filename='img/recomendations/ludmilaevteeva.jpg') }}" alt="">
+        <div class="col-12 col-md-4">
+            <div class="card border-0">
+                <div class="card-body">
+                    <div class="recommend-img rounded-circle mx-auto">
+                        <img class="rounded-circle mx-auto d-block"
+                            src="{{ url_for('static', filename='img/recomendations/ludmilaevteeva.jpg') }}" alt="">
+                    </div>
+                    <h4 class="my-3 card-title text-center">Людмила Евтеева</h4>
+                    <h1 class="card-title text-center"><a href="#"><i
+                                class="fa fa-instagram text-danger"></i></a>&nbsp;&nbsp;<a href="#"><i
+                                class="fa fa-vk text-primary"></i></a></h1>
                 </div>
-                <h4 class="my-3 card-title text-center">Людмила Евтеева</h4>
-                <h1 class="card-title text-center"><a href="#"><i
-                            class="fa fa-instagram text-danger"></i></a>&nbsp;&nbsp;<a href="#"><i
-                            class="fa fa-vk text-primary"></i></a></h1>
             </div>
         </div>
 
-        <div class="card border-0">
-            <div class="card-body">
-                <div class="recommend-img rounded-circle mx-auto">
-                    <img class="rounded-circle mx-auto d-block"
-                        src="{{ url_for('static', filename='img/recomendations/venerasafina.jpg') }}" alt="">
+        <div class="col-12 col-md-4">
+            <div class="card border-0">
+                <div class="card-body">
+                    <div class="recommend-img rounded-circle mx-auto">
+                        <img class="rounded-circle mx-auto d-block"
+                            src="{{ url_for('static', filename='img/recomendations/venerasafina.jpg') }}" alt="">
+                    </div>
+                    <h4 class="my-3 card-title text-center">Венера Сафина</h4>
+                    <h1 class="card-title text-center"><a href="#"><i
+                                class="fa fa-instagram text-danger"></i></a>&nbsp;&nbsp;<a href="#"><i
+                                class="fa fa-vk text-primary"></i></a></h1>
                 </div>
-                <h4 class="my-3 card-title text-center">Венера Сафина</h4>
-                <h1 class="card-title text-center"><a href="#"><i
-                            class="fa fa-instagram text-danger"></i></a>&nbsp;&nbsp;<a href="#"><i
-                            class="fa fa-vk text-primary"></i></a></h1>
             </div>
         </div>
 
-        <div class="card border-0">
-            <div class="card-body">
-                <div class="recommend-img rounded-circle mx-auto">
-                    <img class="rounded-circle mx-auto d-block"
-                        src="{{ url_for('static', filename='img/recomendations/mariyagarbuzova.jpg') }}" alt="">
+        <div class="col-12 col-md-4">
+            <div class="card border-0">
+                <div class="card-body">
+                    <div class="recommend-img rounded-circle mx-auto">
+                        <img class="rounded-circle mx-auto d-block"
+                            src="{{ url_for('static', filename='img/recomendations/mariyagarbuzova.jpg') }}" alt="">
+                    </div>
+                    <h4 class="my-3 card-title text-center">Мария Гарбузова</h4>
+                    <h1 class="card-title text-center"><a href="#"><i
+                                class="fa fa-instagram text-danger"></i></a>&nbsp;&nbsp;<a href="#"><i
+                                class="fa fa-vk text-primary"></i></a></h1>
                 </div>
-                <h4 class="my-3 card-title text-center">Мария Гарбузова</h4>
-                <h1 class="card-title text-center"><a href="#"><i
-                            class="fa fa-instagram text-danger"></i></a>&nbsp;&nbsp;<a href="#"><i
-                            class="fa fa-vk text-primary"></i></a></h1>
             </div>
         </div>
     </div>

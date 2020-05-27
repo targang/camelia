@@ -46,3 +46,6 @@
 .product-img {
   max-width: 400px;
 }
+.cart-count-field {
+  width: 60px;
+}

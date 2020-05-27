@@ -2,7 +2,7 @@ from flask import render_template, request, session, jsonify
 from flask_babelex import Babel
 
 from . import app
-from .forms import RegisterForm, LoginForm, AddToCartForm
+from .forms import RegisterForm, LoginForm, AddToCartForm, CheckoutForm
 from .models import Product
 
 babel = Babel(app)
@@ -32,12 +32,29 @@ def shop():
 def cart():
     s_cart = session.get("cart")
     cart = {}
+    total = 0
     for key, value in s_cart.items():
         product = Product.query.get(int(key))
         title = product.title
         price = product.price
         cart[key] = {"title": title, "price": price, "count": value}
-    return render_template("cart.html", cart=cart)
+        total += int(price) * int(value)
+    return render_template("cart.html", cart=cart, total=total)
+
+
+@app.route("/checkout")
+def checkout():
+    s_cart = session.get("cart")
+    cart = {}
+    total = 0
+    form = CheckoutForm()
+    for key, value in s_cart.items():
+        product = Product.query.get(int(key))
+        title = product.title
+        price = product.price
+        cart[key] = {"title": title, "price": price, "count": value}
+        total += int(price) * int(value)
+    return render_template("checkout.html", cart=cart, total=total, form=form)
 
 
 @app.route("/add_to_cart", methods=["POST"])
