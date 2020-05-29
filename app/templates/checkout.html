@@ -6,81 +6,110 @@
 
 {% block main %}
 {% if cart_count %}
-<div class="container pt-4 pb-3" style="margin-top: 108px;">
-    <div class="mx-auto" style="max-width: 600px;">
-        <h2>Ваш заказ</h2>
-        <div class="table-responcive mt-3">
-            <table class="table">
-                <tbody>
-                    {% for key, item in cart.items() %}
-                    <tr>
-                        <th>{{ item["title"] }} x{{ item["count"] }}</th>
-                        <td>{{ item["price"] }}₽</td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <th class="text-uppercase">Сумма</th>
-                        <td>{{ total }}₽</td>
-                    </tr>
-                </tbody>
-            </table>
+<div class="container py-4" style="margin-top: 108px;">
+    <div class="row">
+        <div class="col-md order-md-last">
+            <div class="card border-0 shadow-md mx-2">
+                <div class="card-body">
+                    <h4 class="card-title">Ваш заказ</h4>
+                    <div class="table-responcive mt-3">
+                        <table class="table mb-sm-0">
+                            <tbody>
+                                {% for key, item in cart.items() %}
+                                <tr>
+                                    <th>{{ item["title"] }} x{{ item["count"] }}</th>
+                                    <td>{{ item["price"] }}₽</td>
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <th class="text-uppercase">Сумма</th>
+                                    <td>{{ total }}₽</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="container mb-5">
-    <div class="card border-0 shadow mx-auto" style="max-width: 600px;">
-        <div class="card-body">
-            <h4 class="card-title">Оформление заказа</h4>
-            <div class="order-step">
-                <div class="form-group">
-                    {{ form.checkout_name.label }}
-                    {{ form.checkout_name(class='form-control') }}
+        <div class="col-md order-md-first">
+            <div class="card border-0 shadow mx-auto">
+                <div class="card-body">
+                    <form id="orderForm">
+                        <h4 class="card-title">Оформление заказа</h4>
+                        {# form.user_form() #}
+                        <fieldset>
+                            <div class="form-group">
+                                {{ form.user_form.checkout_name.label }}
+                                {{ form.user_form.checkout_name(class='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.user_form.checkout_surname.label }}
+                                {{ form.user_form.checkout_surname(class='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.user_form.checkout_phone.label }}
+                                {{ form.user_form.checkout_phone(class='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.user_form.checkout_email.label }}
+                                {{ form.user_form.checkout_email(class='form-control') }}
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" aria-valuenow="0" aria-valuemin="0"
+                                    aria-valuemax="100" style="width: 0%;"></div>
+                            </div>
+                            <div class="d-flex mt-3">
+                                <button class="btn btn-secondary btn-prev mx-1 disabled">Назад</button>
+                                <button class="btn btn-primary btn-next mx-1">Вперед</button>
+                            </div>
+                        </fieldset>
+                        <fieldset class="d-none">
+                            <div class="form-group">
+                                {{ form.address_form.checkout_country.label }}
+                                {{ form.address_form.checkout_country(class='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.address_form.checkout_city.label }}
+                                {{ form.address_form.checkout_city(class='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.address_form.checkout_address.label }}
+                                {{ form.address_form.checkout_address(class='form-control') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.address_form.checkout_postcode.label }}
+                                {{ form.address_form.checkout_postcode(class='form-control') }}
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" aria-valuenow="33" aria-valuemin="0"
+                                    aria-valuemax="100" style="width: 33%;"></div>
+                            </div>
+                            <div class="d-flex mt-3">
+                                <button class="btn btn-secondary btn-prev mx-1">Назад</button>
+                                <button class="btn btn-primary btn-next mx-1">Далее</button>
+                            </div>
+                        </fieldset>
+                        <fieldset class="d-none">
+                            <div class="form-group">
+                                {{ form.service_form.checkout_service.label }}
+                                {% for item in form.service_form.checkout_service %}
+                                <div class="form-check">
+                                    {{ item(class="form-check-input") }}
+                                    {{ item.label(class="form-check-label") }}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" aria-valuenow="66" aria-valuemin="0"
+                                    aria-valuemax="100" style="width: 66%;"></div>
+                            </div>
+                            <div class="d-flex mt-3">
+                                <button class="btn btn-secondary btn-prev mx-1">Назад</button>
+                                <button class="btn btn-primary btn-fin mx-1">Завершить</button>
+                            </div>
+                        </fieldset>
+                    </form>
                 </div>
-                <div class="form-group">
-                    {{ form.checkout_surname.label }}
-                    {{ form.checkout_surname(class='form-control') }}
-                </div>
-                <div class="form-group">
-                    {{ form.checkout_phone.label }}
-                    {{ form.checkout_phone(class='form-control') }}
-                </div>
-                <div class="form-group">
-                    {{ form.checkout_email.label }}
-                    {{ form.checkout_email(class='form-control') }}
-                </div>
-            </div>
-            <div class="order-step">
-                <div class="form-group">
-                    {{ form.checkout_country.label }}
-                    {{ form.checkout_country(class='form-control') }}
-                </div>
-                <div class="form-group">
-                    {{ form.checkout_city.label }}
-                    {{ form.checkout_city(class='form-control') }}
-                </div>
-                <div class="form-group">
-                    {{ form.checkout_address.label }}
-                    {{ form.checkout_address(class='form-control') }}
-                </div>
-                <div class="form-group">
-                    {{ form.checkout_postcode.label }}
-                    {{ form.checkout_postcode(class='form-control') }}
-                </div>
-            </div>
-            <div class="order-step">
-                <div class="form-group">
-                    {{ form.checkout_service.label }}
-                    {% for item in form.checkout_service %}
-                        <div class="form-check">
-                            {{ item(class="form-check-input") }}
-                            {{ item.label(class="form-check-label") }}
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="progress">
-                <div class="progress-bar progress-bar-success" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                    style="width: 0%;"></div>
             </div>
         </div>
     </div>
@@ -154,5 +183,18 @@
 {% endif %}
 {% endblock main %}
 {% block scripts %}
-
+<script>
+    $(".btn-next").click(function () {
+        let curr_fs = $(this).parents("fieldset");
+        let next_fs = $(this).parents("fieldset").next();
+        next_fs.removeClass("d-none");
+        curr_fs.addClass("d-none");
+    })
+    $(".btn-prev:not(:disabled):not(.disabled)").click(function () {
+        let curr_fs = $(this).parents("fieldset");
+        let prev_fs = $(this).parents("fieldset").prev();
+        prev_fs.removeClass("d-none");
+        curr_fs.addClass("d-none");
+    })
+</script>
 {% endblock scripts %}

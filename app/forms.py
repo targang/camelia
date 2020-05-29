@@ -9,6 +9,7 @@ from wtforms import (
     SubmitField,
     SelectField,
     RadioField,
+    FormField,
 )
 from wtforms.validators import DataRequired, Email, Length
 from wtforms.widgets.html5 import NumberInput
@@ -56,7 +57,7 @@ class AddToCartForm(FlaskForm):
     submit_add = SubmitField("Добавить в корзину")
 
 
-class CheckoutForm(FlaskForm):
+class CheckoutUserForm(FlaskForm):
     checkout_name = StringField(
         "Имя", validators=[DataRequired()], render_kw={"placeholder": "Введите имя"},
     )
@@ -75,9 +76,23 @@ class CheckoutForm(FlaskForm):
         validators=[DataRequired(), Email()],
         render_kw={"placeholder": "Адрес почты"},
     )
+
+
+class CheckoutAddressForm(FlaskForm):
     checkout_country = SelectField("Страна", choices=[(1, "Россия"), (2, "Украина")])
     checkout_city = SelectField("Населенный пункт")
     checkout_address = StringField("Адрес", validators=[DataRequired()])
     checkout_postcode = IntegerField("Индекс", validators=[DataRequired()])
-    checkout_service = RadioField("Служба доставки", choices=[(1, "СДЭК"), (2, "Boxberry")])
+
+
+class CheckoutServiceForm(FlaskForm):
+    checkout_service = RadioField(
+        "Служба доставки", choices=[(1, "СДЭК"), (2, "Boxberry")]
+    )
     checkout_payment = RadioField("Способ оплаты", choices=[])
+
+
+class CheckoutForm(FlaskForm):
+    user_form = FormField(CheckoutUserForm)
+    address_form = FormField(CheckoutAddressForm)
+    service_form = FormField(CheckoutServiceForm)

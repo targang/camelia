@@ -1,16 +1,37 @@
 .navbar-toggler:focus {
   outline: none;
 }
-.btn-primary {
-  background-color: #800000 !important;
-  border: #800000 2px solid !important;
-  border-radius: 8px;
-  box-shadow: none !important;
+.btn.disabled {
+  cursor: default;
 }
-.btn-primary:hover {
-  color: #800000 !important;
-  background-color: white !important;
-  border: #800000 2px solid !important;
+.btn-primary,
+.btn-secondary {
+  border-radius: 8px;
+}
+.btn-primary:not(:disabled):not(.disabled),
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #800000;
+  border: #800000 2px solid;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.btn-primary:not(:disabled):not(.disabled):hover {
+  color: #800000;
+  background-color: white;
+  border: #800000 2px solid;
+}
+.btn-secondary:not(:disabled):not(.disabled),
+.btn-secondary:not(:disabled):not(.disabled):active {
+  background-color: #5a6a68;
+  border: #5a6a68 2px solid;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.btn-secondary:not(:disabled):not(.disabled):hover,
+.btn-secondary:not(:disabled):not(.disabled):focus {
+  color: #5a6a68;
+  background-color: white;
+  border: #5a6a68 2px solid;
 }
 .navbar {
   transition: top 0.5s ease;
@@ -48,4 +69,9 @@
 }
 .cart-count-field {
   width: 60px;
+}
+@media screen and (min-width: 768px) {
+  .shadow-md {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
 }
