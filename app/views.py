@@ -31,6 +31,9 @@ def shop():
 @app.route("/cart")
 def cart():
     s_cart = session.get("cart")
+    if not s_cart:
+        cart = None
+        return render_template("checkout.html")
     cart = {}
     total = 0
     for key, value in s_cart.items():
@@ -45,6 +48,9 @@ def cart():
 @app.route("/checkout")
 def checkout():
     s_cart = session.get("cart")
+    if not s_cart:
+        cart = None
+        return render_template("checkout.html")
     cart = {}
     total = 0
     form = CheckoutForm()

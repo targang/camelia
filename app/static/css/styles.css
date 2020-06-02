@@ -75,3 +75,29 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   }
 }
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #aaaaaa;
+}
+@media screen and (min-width: 991.98px) {
+  .nav-link {
+    position: relative;
+  }
+  .nav-link:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  .nav-link:hover:after {
+    width: 100%;
+    left: 0;
+  }
+}

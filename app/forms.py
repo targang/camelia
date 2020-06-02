@@ -76,11 +76,14 @@ class CheckoutUserForm(FlaskForm):
         validators=[DataRequired(), Email()],
         render_kw={"placeholder": "Адрес почты"},
     )
+    checkout_next_1 = SubmitField("Далее")
 
 
 class CheckoutAddressForm(FlaskForm):
-    checkout_country = SelectField("Страна", choices=[(1, "Россия"), (2, "Украина")])
-    checkout_city = SelectField("Населенный пункт")
+    checkout_country = SelectField(
+        "Страна", choices=[(1, "Россия"), (2, "Украина")], validators=[DataRequired()],
+    )
+    checkout_city = SelectField("Населенный пункт", validators=[DataRequired()],)
     checkout_address = StringField("Адрес", validators=[DataRequired()])
     checkout_postcode = IntegerField("Индекс", validators=[DataRequired()])
 
