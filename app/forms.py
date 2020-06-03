@@ -83,7 +83,7 @@ class CheckoutAddressForm(FlaskForm):
     checkout_country = SelectField(
         "Страна", choices=[(1, "Россия"), (2, "Украина")], validators=[DataRequired()],
     )
-    checkout_city = SelectField("Населенный пункт", validators=[DataRequired()],)
+    checkout_city = SelectField("Населенный пункт", choices=[(1, "Казань")], validators=[DataRequired()],)
     checkout_address = StringField("Адрес", validators=[DataRequired()])
     checkout_postcode = IntegerField("Индекс", validators=[DataRequired()])
 

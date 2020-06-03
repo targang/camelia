@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="d-flex mt-3">
-                            <button class="btn btn-secondary btn-prev mx-1 disabled">Назад</button>
+                            <button type="button" class="btn btn-secondary btn-prev mx-1 disabled">Назад</button>
                             <input class="btn btn-primary btn-next mx-1" id="orderSubmit-1" type="submit" value="Вперед">
                         </div>
                     </form>
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="d-flex mt-3">
-                            <button class="btn btn-secondary btn-prev mx-1">Назад</button>
+                            <button type="button" class="btn btn-secondary btn-prev mx-1">Назад</button>
                             <input type="submit" value="Вперед" class="btn btn-primary btn-next mx-1">
                         </div>
                     </form>
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                         <div class="d-flex mt-3">
-                            <button class="btn btn-secondary btn-prev mx-1">Назад</button>
+                            <button type="button" class="btn btn-secondary btn-prev mx-1">Назад</button>
                             <input type="submit" class="btn btn-primary btn-fin mx-1" value="Завершить">
                         </div>
                     </form>
@@ -202,12 +202,11 @@
 {% endblock main %}
 {% block scripts %}
 <script>
-    var payload = "";
+    var payload = {};
     $("form:not(#orderForm-3)").submit(function (e) {
         e.preventDefault();
         if (payload == "") payload = $(this).serialize();
         else payload = [payload, $(this).serialize()].join('&');
-        console.log(payload)
         let curr_f = $(this);
         let next_f = $(this).next();
         next_f.removeClass("d-none");
@@ -216,13 +215,14 @@
     $("#orderForm-3").submit(function (e) {
         e.preventDefault();
         payload = [payload, $(this).serialize()].join('&');
-        console.log(payload);
+        $.post("{{ url_for('checkout') }}", payload);
     })
     $(".btn-prev:not(:disabled):not(.disabled)").click(function () {
-        let curr_fs = $(this).parents("fieldset");
-        let prev_fs = $(this).parents("fieldset").prev();
-        prev_fs.removeClass("d-none");
-        curr_fs.addClass("d-none");
+        let curr_f = $(this).parents("form");
+        curr_f[0].reset();
+        let prev_f = $(this).parents("form").prev();
+        prev_f.removeClass("d-none");
+        curr_f.addClass("d-none");
     })
 </script>
 {% endblock scripts %}

@@ -81,12 +81,12 @@
   background-color: #aaaaaa;
 }
 @media screen and (min-width: 991.98px) {
-  .nav-link {
+  .nav-primary-link {
     position: relative;
   }
-  .nav-link:after {
+  .nav-primary-link:after {
     background: none repeat scroll 0 0 transparent;
-    bottom: 0;
+    bottom: 5px;
     content: "";
     display: block;
     height: 2px;
@@ -96,7 +96,7 @@
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
   }
-  .nav-link:hover:after {
+  .nav-primary-link:hover:after {
     width: 100%;
     left: 0;
   }
