@@ -106,7 +106,7 @@ def auth():
     return render_template("auth.html", register=register, login=login)
 
 
-@app.route("/oformlenie_zakaza")
+@app.route("/howto_checkout")
 def howto():
     return render_template("footer/howto.html")
 
