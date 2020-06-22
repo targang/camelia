@@ -1,8 +1,10 @@
-from flask import render_template, request, session, jsonify, send_from_directory
+import json
+
+from flask import jsonify, render_template, request, send_from_directory, session
 from flask_babelex import Babel
 
 from . import app
-from .forms import RegisterForm, LoginForm, AddToCartForm, CheckoutForm
+from .forms import AddToCartForm, CheckoutForm, LoginForm, RegisterForm
 from .models import Product
 
 babel = Babel(app)
@@ -33,9 +35,26 @@ def send_static(path):
 
 @app.route("/shop")
 def shop():
+    return send_from_directory('./frontend/dist/', 'shop.html')
+
+@app.route("/get_products")
+def get_products():
     products = Product.query.all()
-    cart_form = AddToCartForm(product_count=1)
-    return render_template("shop.html", products=list(products), cart_form=cart_form)
+    data = {"products": []}
+    product: Product
+    for product in products:
+        data["products"].append(
+            {
+                "id": str(product.id),
+                "vendorCode": str(product.vendor_code),
+                "title": product.title,
+                "description": product.description,
+                "price": str(product.price),
+                "weight": str(product.weight),
+                "imagePath": f"/static/{product.imagepath}",
+            }
+        )
+    return jsonify({"status": "success", "data": data})
 
 
 @app.route("/cart")
@@ -75,8 +94,9 @@ def checkout():
 
 @app.route("/add_to_cart", methods=["POST"])
 def add_to_cart():
-    product_id = request.form["product_id"]
-    product_count = int(request.form["product_count"])
+    data = json.loads(request.data)
+    product_id = str(data["productId"])
+    product_count = str(data["productCount"])
     if "cart" in session:
         if not product_id in session["cart"].keys():
             session["cart"][product_id] = product_count
@@ -85,8 +105,9 @@ def add_to_cart():
         session.modified = True
     else:
         session["cart"] = {product_id: product_count}
+    print(session["cart"])
     count = len(session["cart"])
-    return jsonify({"status": "success", "data": {"count": count}}), 200
+    return jsonify({"status": "success", "data": {"count": str(count)}}), 200
 
 
 @app.route("/remove_from_cart", methods=["POST"])
@@ -102,6 +123,15 @@ def remove_from_cart():
         jsonify({"status": "error", "message": "product ID not found"}),
         404,
     )
+
+
+@app.route("/get_cart_length")
+def get_cart_length():
+    if "cart" in session:
+        count = str(len(session["cart"]))
+    else:
+        count = "0"
+    return jsonify({"status": "success", "data": {"count": count}}), 200
 
 
 @app.route("/")

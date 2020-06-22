@@ -10,16 +10,28 @@
         </a>
         <hr class="my-0" />
         <small class="font-italic d-inline-block d-lg-none">
-          <a class="navbar-icon mx-2 facebook-icon" href="https://www.facebook.com/safneaflowers">
+          <a
+            class="navbar-icon mx-2 facebook-icon"
+            href="https://www.facebook.com/safneaflowers"
+          >
             <fa-icon :icon="['fab', 'facebook']"></fa-icon>
           </a>
-          <a class="navbar-icon mx-2 instagram-icon" href="https://www.instagram.com/safnea_flowers">
+          <a
+            class="navbar-icon mx-2 instagram-icon"
+            href="https://www.instagram.com/safnea_flowers"
+          >
             <fa-icon :icon="['fab', 'instagram']"></fa-icon>
           </a>
-          <a class="navbar-icon mx-2 vk-icon" href="https://vk.com/safnea_flowers">
+          <a
+            class="navbar-icon mx-2 vk-icon"
+            href="https://vk.com/safnea_flowers"
+          >
             <fa-icon :icon="['fab', 'vk']"></fa-icon>
           </a>
-          <a class="navbar-icon mx-2 whatsapp-icon" href="https://wa.me/79050253485">
+          <a
+            class="navbar-icon mx-2 whatsapp-icon"
+            href="https://wa.me/79050253485"
+          >
             <fa-icon :icon="['fab', 'whatsapp']"></fa-icon>
           </a>
           <a class="navbar-icon mx-2" href="mailto:shop@camelia-flowers.ru">
@@ -55,30 +67,48 @@
         <div class="flex-column ml-auto">
           <ul class="navbar-nav flex-row d-none d-lg-flex mb-lg-2">
             <li class="nav-item">
-              <a class="nav-link py-1 pr-3 facebook-icon" href="https://www.facebook.com/safneaflowers">
+              <a
+                class="nav-link py-1 pr-3 facebook-icon"
+                href="https://www.facebook.com/safneaflowers"
+              >
                 <fa-icon :icon="['fab', 'facebook']"></fa-icon>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link py-1 pr-3 instagram-icon" href="https://www.instagram.com/safnea_flowers">
+              <a
+                class="nav-link py-1 pr-3 instagram-icon"
+                href="https://www.instagram.com/safnea_flowers"
+              >
                 <fa-icon :icon="['fab', 'instagram']"></fa-icon>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link py-1 pr-3 vk-icon" href="https://vk.com/safnea_flowers">
+              <a
+                class="nav-link py-1 pr-3 vk-icon"
+                href="https://vk.com/safnea_flowers"
+              >
                 <fa-icon :icon="['fab', 'vk']"></fa-icon>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link py-1 pr-3 whatsapp-icon" href="https://wa.me/79050253485">
+              <a
+                class="nav-link py-1 pr-3 whatsapp-icon"
+                href="https://wa.me/79050253485"
+              >
                 <fa-icon :icon="['fab', 'whatsapp']"></fa-icon>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link py-1 pr-3" href="mailto:shop@camelia-flowers.ru">shop@camelia-flowers.ru</a>
+              <a
+                class="nav-link py-1 pr-3"
+                href="mailto:shop@camelia-flowers.ru"
+                >shop@camelia-flowers.ru</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link py-1 pr-3" href="tel:79050253485">+7 905 025-34-85</a>
+              <a class="nav-link py-1 pr-3" href="tel:79050253485"
+                >+7 905 025-34-85</a
+              >
             </li>
             <li class="nav-item disabled">
               <span class="nav-link py-1 pr-3">Пн-Пт 8.00-17.00</span>
@@ -98,9 +128,9 @@
                 href="/cart"
               >
                 Корзина
-                <span class="badge badge-pill badge-danger" id="cart-count"
-                  >0</span
-                >
+                <span class="badge badge-pill badge-danger" id="cart-count">{{
+                  count
+                }}</span>
               </a>
             </li>
             <li class="nav-item">
@@ -130,6 +160,9 @@ export default {
   name: 'BaseNavbar',
   data() {
     return { showNavbar: true, lastScroll: 0 };
+  },
+  props: {
+    count: Number,
   },
   methods: {
     navbarOnScroll() {

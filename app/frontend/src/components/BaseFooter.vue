@@ -45,7 +45,11 @@ export default {
     return { fixedFooter: false };
   },
   mounted() {
-    this.fixedFooter = document.body.clientHeight <= window.screen.height;
+    window.addEventListener(
+      'load',
+      () =>
+        (this.fixedFooter = document.body.clientHeight <= window.screen.height)
+    );
   },
 };
 </script>

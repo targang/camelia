@@ -45,7 +45,7 @@ import StuffSection from './components/StuffSection';
 import BadgeSection from './components/BadgeSection';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     BaseNavbar,
     BaseFooter,
