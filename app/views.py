@@ -1,4 +1,4 @@
-from flask import render_template, request, session, jsonify
+from flask import render_template, request, session, jsonify, send_from_directory
 from flask_babelex import Babel
 
 from . import app
@@ -19,6 +19,16 @@ def get_locale():
     if request.args.get("lang"):
         session["lang"] = request.args.get("lang")
     return session.get("lang", "ru")
+
+
+@app.route("/dist/<path:path>")
+def send_dist(path):
+    return send_from_directory("./frontend/dist/", path)
+
+
+@app.route("/static/<path:path>")
+def send_static(path):
+    return app.send_static_file(path)
 
 
 @app.route("/shop")
@@ -76,7 +86,7 @@ def add_to_cart():
     else:
         session["cart"] = {product_id: product_count}
     count = len(session["cart"])
-    return jsonify({"status": "success", "responce": {"count": count}}), 200
+    return jsonify({"status": "success", "data": {"count": count}}), 200
 
 
 @app.route("/remove_from_cart", methods=["POST"])
@@ -89,14 +99,14 @@ def remove_from_cart():
             count = len(session["cart"])
             return jsonify({"status": "success", "responce": {"count": count}}), 200
     return (
-        jsonify({"status": "error", "error": {"code": 404, "message": "ID not found"}}),
+        jsonify({"status": "error", "message": "product ID not found"}),
         404,
     )
 
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return send_from_directory("./frontend/dist/", "index.html")
 
 
 @app.route("/login")

@@ -14,9 +14,9 @@
             </div>
             <h4 class="my-3 card-title text-center">Людмила Евтеева</h4>
             <h1 class="card-title text-center">
-              <a class="instagram-icon mx-2" href="#"
+              <a class="instagram-icon mx-2" href="https://www.instagram.com/ludmilaevteeva/"
                 ><fa-icon :icon="['fab', 'instagram']"></fa-icon></a
-              ><a class="vk-icon mx-2" href="#"
+              ><a class="vk-icon mx-2" href="https://vk.com/deconn/"
                 ><fa-icon :icon="['fab', 'vk']"></fa-icon
               ></a>
             </h1>
@@ -36,9 +36,9 @@
             </div>
             <h4 class="my-3 card-title text-center">Венера Сафина</h4>
             <h1 class="card-title text-center">
-              <a class="instagram-icon mx-2" href="#"
+              <a class="instagram-icon mx-2" href="https://www.instagram.com/safnea_flowers/"
                 ><fa-icon :icon="['fab', 'instagram']"></fa-icon></a
-              ><a class="vk-icon mx-2" href="#"
+              ><a class="vk-icon mx-2" href="https://vk.com/safnea_flowers"
                 ><fa-icon :icon="['fab', 'vk']"></fa-icon
               ></a>
             </h1>
@@ -58,9 +58,9 @@
             </div>
             <h4 class="my-3 card-title text-center">Мария Гарбузова</h4>
             <h1 class="card-title text-center">
-              <a class="instagram-icon mx-2" href="#"
+              <a class="instagram-icon mx-2" href="https://www.instagram.com/mariagarbuzova/"
                 ><fa-icon :icon="['fab', 'instagram']"></fa-icon></a
-              ><a class="vk-icon mx-2" href="#"
+              ><a class="vk-icon mx-2" href="https://vk.com/club20685259"
                 ><fa-icon :icon="['fab', 'vk']"></fa-icon
               ></a>
             </h1>
@@ -70,12 +70,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'FourthSection',
-};
-</script>
 
 <style>
 .recommend-img {

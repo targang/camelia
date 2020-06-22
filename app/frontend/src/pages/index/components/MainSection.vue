@@ -5,7 +5,6 @@
         <div classs="flex-md-column py-auto">
           <img
             class="mx-auto rounded-circle main-img"
-            style="width: 90%;max-width: 650px;max-height: 650px;"
             src="../assets/main-flowers.jpg"
           />
         </div>
@@ -28,14 +27,18 @@
         </div>
       </div>
       <div class="mt-4">
-        <a href="/shop" class="btn btn-primary text-uppercase">Перейти в каталог</a>
+        <a href="/shop" class="btn btn-primary text-uppercase"
+          >Перейти в каталог</a
+        >
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'FirstSection',
-};
-</script>
+<style lang="scss">
+.main-img {
+  width: 90%;
+  max-width: 650px;
+  max-height: 650px;
+}
+</style>

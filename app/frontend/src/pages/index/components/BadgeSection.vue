@@ -8,7 +8,7 @@
           <fa-icon :icon="['fas', 'dollar-sign']"></fa-icon>
         </div>
         <h4>Выгодная цена</h4>
-        <p style="font-size: large;">
+        <p class="badge-sec-text">
           Цена зефирной глины Camelia Flowers Soft Вас приятно удивит
         </p>
       </div>
@@ -19,7 +19,7 @@
           <fa-icon :icon="['fas', 'award']"></fa-icon>
         </div>
         <h4>Качество</h4>
-        <p style="font-size: large;">
+        <p class="badge-sec-text">
           Зефирная глина для лепки цветов Camelia Flowers Soft обладает отличным
           качеством при невысокой цене
         </p>
@@ -31,7 +31,7 @@
           <fa-icon :icon="['fas', 'truck']"></fa-icon>
         </div>
         <h4>Доставка по России</h4>
-        <p style="font-size: large;">
+        <p class="badge-sec-text">
           Почта России, CDEK, Boxberry, DPD, СберЛогистика — самые выгодные
           тарифы доставки
         </p>
@@ -39,12 +39,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'FifthSection',
-};
-</script>
 
 <style lang="scss">
 .features-icon {
@@ -58,5 +52,8 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+.badge-sec-text {
+  font-size: 18px;
 }
 </style>

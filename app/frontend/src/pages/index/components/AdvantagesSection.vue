@@ -13,7 +13,7 @@
         />
       </div>
       <div class="col-md-6 order-md-first text-center my-auto">
-        <p style="font-size: 24px;">
+        <p>
           Зефирная глина Camelia Flowers Soft создана по уникальной рецептуре,
           благодаря которой она мягкая и пластичная, легко раскатывается до
           полупрозрачности. Отлично держит форму, готовые цветы получаются
@@ -31,7 +31,7 @@
         />
       </div>
       <div class="col-md-6 text-center my-auto">
-        <p style="font-size: 24px;">
+        <p>
           Зефирная глина Camelia Flowers Soft цветная обладает широкой палитрой
           ярких и насыщенных оттенков, которые при лепке необходимо смешивать с
           белым базовым цветом. Возможно смешивание любых цветов между собой.
@@ -48,7 +48,7 @@
         />
       </div>
       <div class="col-md-6 order-md-first text-center my-auto">
-        <p style="font-size: 24px;">
+        <p>
           Зефирная глина Camelia Flowers Clay идеальна для создания композиций и
           украшений из реалистичных цветов, декоративных сладостей и лепки
           фигурок.
@@ -56,13 +56,15 @@
       </div>
     </div>
     <div class="mt-3 text-center">
-      <a href="#" class="btn btn-primary text-uppercase">Перейти в каталог</a>
+      <a href="/shop" class="btn btn-primary text-uppercase"
+        >Перейти в каталог</a
+      >
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ThirdSection',
-};
-</script>
+<style scoped>
+p {
+  font-size: 1.5rem;
+}
+</style>

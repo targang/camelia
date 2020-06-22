@@ -1,30 +1,30 @@
 <template>
   <div id="app">
-    <BaseNavbar></BaseNavbar>
+    <base-navbar></base-navbar>
 
     <section>
       <parallax-img>
-        <first-section></first-section>
+        <main-section></main-section>
       </parallax-img>
     </section>
 
     <section>
-      <second-section></second-section>
+      <video-section></video-section>
     </section>
 
     <section>
       <parallax-img>
-        <third-section></third-section>
+        <advantages-section></advantages-section>
       </parallax-img>
     </section>
 
     <section>
-      <fourth-section></fourth-section>
+      <stuff-section></stuff-section>
     </section>
 
     <section>
       <parallax-img>
-        <fifth-section></fifth-section>
+        <badge-section></badge-section>
       </parallax-img>
     </section>
 
@@ -38,11 +38,11 @@ import BaseFooter from '../../components/BaseFooter';
 
 import ParallaxImg from './components/ParallaxImg';
 
-import FirstSection from './components/FirstSection';
-import SecondSection from './components/SecondSection';
-import ThirdSection from './components/ThirdSection';
-import FourthSection from './components/FourthSection';
-import FifthSection from './components/FifthSection';
+import MainSection from './components/MainSection';
+import VideoSection from './components/VideoSection';
+import AdvantagesSection from './components/AdvantagesSection';
+import StuffSection from './components/StuffSection';
+import BadgeSection from './components/BadgeSection';
 
 export default {
   name: 'app',
@@ -50,11 +50,11 @@ export default {
     BaseNavbar,
     BaseFooter,
     ParallaxImg,
-    FirstSection,
-    SecondSection,
-    ThirdSection,
-    FourthSection,
-    FifthSection,
+    MainSection,
+    VideoSection,
+    AdvantagesSection,
+    StuffSection,
+    BadgeSection,
   },
 };
 </script>
