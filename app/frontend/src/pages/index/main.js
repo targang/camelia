@@ -2,7 +2,6 @@ import Vue from 'vue';
 import App from './App.vue';
 
 import 'bootstrap';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../../assets/scss/main.scss';
 
 import { library } from '@fortawesome/fontawesome-svg-core';

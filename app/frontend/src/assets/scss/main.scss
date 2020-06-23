@@ -1,2 +1,24 @@
-@import './buttons.scss';
 @import './icons.scss';
+
+$primary: #800000;
+
+.btn.disabled {
+  cursor: default;
+}
+.btn-primary {
+  border-radius: 8px;
+
+  &:not(:disabled):not(.disabled) {
+    border: $primary 2px solid;
+    border-radius: 8px;
+    box-shadow: none;
+
+    &:hover {
+      color: $primary;
+      background-color: white;
+      border: $primary 2px solid;
+    }
+  }
+}
+
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
