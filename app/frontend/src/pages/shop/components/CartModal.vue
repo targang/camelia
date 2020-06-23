@@ -61,12 +61,8 @@ export default {
   },
   methods: {
     submitAdd() {
-      fetch('add_to_cart', {
+      fetch('cart/add', {
         method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify({
           productId: this.productId.toString(),
           productCount: this.count.toString(),

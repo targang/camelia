@@ -128,9 +128,12 @@
                 href="/cart"
               >
                 Корзина
-                <span class="badge badge-pill badge-danger" id="cart-count">{{
-                  count
-                }}</span>
+                <span
+                  class="badge badge-pill badge-danger"
+                  id="cart-count"
+                  v-if="count"
+                  >{{ count }}</span
+                >
               </a>
             </li>
             <li class="nav-item">

@@ -62,7 +62,7 @@ export default {
     };
   },
   created() {
-    fetch('/get_cart_length')
+    fetch('/cart/length')
       .then((responce) => {
         return responce.json();
       })

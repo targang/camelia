@@ -13,28 +13,37 @@ module.exports = {
       filename: 'shop.html',
       title: 'Каталог | Camelia Flowers',
     },
+    cart: {
+      entry: 'src/pages/cart/main.js',
+      template: 'public/index.html',
+      filename: 'cart.html',
+      title: 'Корзина | Camelia Flowers',
+    },
   },
   devServer: {
     proxy: {
-      ['^/cart']: {
+      '^/checkout': {
         target: 'http://127.0.0.1:5000',
       },
-      ['^/checkout']: {
+      '^/auth': {
         target: 'http://127.0.0.1:5000',
       },
-      ['^/auth']: {
+      '^/static': {
         target: 'http://127.0.0.1:5000',
       },
-      ['^/static']: {
+      '^/get_products': {
         target: 'http://127.0.0.1:5000',
       },
-      ['^/get_products']: {
+      '^/cart/length': {
         target: 'http://127.0.0.1:5000',
       },
-      ['^/add_to_cart']: {
+      '^/cart/items': {
         target: 'http://127.0.0.1:5000',
       },
-      ['^/get_cart_length']: {
+      '^/cart/add': {
+        target: 'http://127.0.0.1:5000',
+      },
+      '^/cart/remove': {
         target: 'http://127.0.0.1:5000',
       },
     },
