@@ -72,7 +72,7 @@ export default {
         return responce.json();
       })
       .then((data) => {
-        this.cartCount = data.data.count;
+        this.cartCount = parseInt(data.data.count);
       });
     fetch('/get_products')
       .then((responce) => {

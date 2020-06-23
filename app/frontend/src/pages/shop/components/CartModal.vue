@@ -79,6 +79,7 @@ export default {
           this.$emit('submit-add', data.data.count);
         });
       $('#addCartModal').modal('hide');
+      this.count = 1;
     },
   },
 };

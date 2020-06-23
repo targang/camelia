@@ -1,34 +1,34 @@
 <template>
   <div id="app">
-    <base-navbar></base-navbar>
+    <base-navbar :count="cartCount" />
 
     <section>
       <parallax-img>
-        <main-section></main-section>
+        <main-section />
       </parallax-img>
     </section>
 
     <section>
-      <video-section></video-section>
+      <video-section />
     </section>
 
     <section>
       <parallax-img>
-        <advantages-section></advantages-section>
+        <advantages-section />
       </parallax-img>
     </section>
 
     <section>
-      <stuff-section></stuff-section>
+      <stuff-section />
     </section>
 
     <section>
       <parallax-img>
-        <badge-section></badge-section>
+        <badge-section />
       </parallax-img>
     </section>
 
-    <base-footer></base-footer>
+    <base-footer />
   </div>
 </template>
 
@@ -55,6 +55,20 @@ export default {
     AdvantagesSection,
     StuffSection,
     BadgeSection,
+  },
+  data() {
+    return {
+      cartCount: 0,
+    };
+  },
+  created() {
+    fetch('/get_cart_length')
+      .then((responce) => {
+        return responce.json();
+      })
+      .then((data) => {
+        this.cartCount = parseInt(data.data.count);
+      });
   },
 };
 </script>

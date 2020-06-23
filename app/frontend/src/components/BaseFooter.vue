@@ -1,5 +1,5 @@
 <template>
-  <footer :class="{ 'fixed-bottom': fixedFooter }" class="footer">
+  <footer class="footer">
     <div class="top-footer">
       <div class="container py-5">
         <div class="row">
@@ -41,16 +41,6 @@
 <script>
 export default {
   name: 'BaseFooter',
-  data() {
-    return { fixedFooter: false };
-  },
-  mounted() {
-    window.addEventListener(
-      'load',
-      () =>
-        (this.fixedFooter = document.body.clientHeight <= window.screen.height)
-    );
-  },
 };
 </script>
 
