@@ -60,19 +60,7 @@ def get_products():
 
 @app.route("/cart")
 def cart():
-    s_cart = session.get("cart")
-    if not s_cart:
-        cart = None
-        return render_template("checkout.html")
-    cart = {}
-    total = 0
-    for key, value in s_cart.items():
-        product = Product.query.get(int(key))
-        title = product.title
-        price = product.price
-        cart[key] = {"title": title, "price": price, "count": value}
-        total += int(price) * int(value)
-    return render_template("cart.html", cart=cart, total=total)
+    return send_from_directory("./frontend/dist", "cart.html")
 
 
 @app.route("/cart/items")
