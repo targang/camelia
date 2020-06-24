@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: 'cartTr',
+  name: 'CartTr',
   props: {
     productId: {
       type: Number,

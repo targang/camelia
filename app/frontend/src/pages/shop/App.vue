@@ -84,9 +84,3 @@ export default {
   },
 };
 </script>
-
-<style>
-section:first-of-type {
-  margin-top: 108px;
-}
-</style>

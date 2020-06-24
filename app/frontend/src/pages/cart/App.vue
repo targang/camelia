@@ -116,16 +116,16 @@
 import BaseNavbar from '../../components/BaseNavbar';
 import BaseFooter from '../../components/BaseFooter';
 
-import cartTr from './components/cartTr';
-import totalCard from './components/totalCard';
+import CartTr from './components/CartTr';
+import TotalCard from './components/TotalCard';
 
 export default {
   name: 'App',
   components: {
     BaseNavbar,
     BaseFooter,
-    cartTr,
-    totalCard,
+    CartTr,
+    TotalCard,
   },
   data() {
     return {
@@ -183,9 +183,3 @@ export default {
   },
 };
 </script>
-
-<style>
-section:first-of-type {
-  margin-top: 108px;
-}
-</style>

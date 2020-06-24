@@ -78,8 +78,5 @@ $primary-col: #800000;
 
 section {
   color: $primary-col;
-  &:first-of-type {
-    margin-top: 108px;
-  }
 }
 </style>

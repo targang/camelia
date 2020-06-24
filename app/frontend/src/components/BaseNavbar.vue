@@ -220,8 +220,8 @@ export default {
       left: 50%;
       bottom: 5px;
       position: absolute;
-      background: rgba(0, 0, 0, 0.7);
-      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      background: rgba(0, 0, 0, 0.6);
+      transition: width 0.5s ease 0s, left 0.5s ease 0s;
       width: 0;
     }
     &-primary:hover {

@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: 'Totalcard',
+  name: 'TotalCard',
   props: {
     sum: {
       type: Number,
