@@ -54,11 +54,7 @@
         style="position: relative;"
       >
         <span class="navbar-toggler-icon"></span>
-        <div
-          id="nav-noti"
-          style="width: 8px;height:8px;position: absolute;right: 12px;bottom: 6px;"
-          class="rounded-circle bg-danger"
-        ></div>
+        <div id="nav-noti" v-if="count" class="rounded-circle bg-danger"></div>
       </button>
       <div
         class="collapse navbar-collapse flex-column ml-lg-0 ml-3 mt-1 mt-lg-0"
@@ -190,6 +186,13 @@ export default {
 </script>
 
 <style lang="scss">
+#nav-noti {
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  right: 12px;
+  bottom: 6px;
+}
 .navbar {
   transition: transform 0.5s ease;
   &-hide {
