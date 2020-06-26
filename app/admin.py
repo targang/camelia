@@ -9,7 +9,7 @@ from flask_admin.form.upload import ImageUploadField
 from . import app
 from .models import Category, Product, db
 
-admin = Admin(app)
+admin = Admin(app, template_mode="bootstrap3")
 
 
 class ProductView(ModelView):
