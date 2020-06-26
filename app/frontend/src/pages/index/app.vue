@@ -74,6 +74,10 @@ export default {
 </script>
 
 <style lang="scss">
+#app {
+  padding-top: 108px;
+}
+
 $primary-col: #800000;
 
 section {

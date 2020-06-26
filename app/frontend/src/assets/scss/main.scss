@@ -2,30 +2,38 @@
 
 $primary: #800000;
 
-.btn.disabled {
-  cursor: default;
-}
-.btn-primary {
-  border-radius: 8px;
-
-  &:not(:disabled):not(.disabled) {
-    border: $primary 2px solid;
-    border-radius: 8px;
-    box-shadow: none;
-
-    &:hover {
-      color: $primary;
-      background-color: white;
-      border: $primary 2px solid;
-    }
-  }
-}
-
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';
 
-#app {
-  padding-top: 108px;
-  padding-bottom: 258px;
-  min-height: 100vh;
-  position: relative;
+.btn {
+  border-radius: 8px;
+
+  &.disabled {
+    cursor: default;
+  }
+  &-primary {
+    &:not(:disabled):not(.disabled) {
+      border: $primary 2px solid;
+      border-radius: 8px;
+      box-shadow: none;
+
+      &:hover {
+        color: $primary;
+        background-color: white;
+        border: $primary 2px solid;
+      }
+    }
+  }
+  &-secondary {
+    &:not(:disabled):not(.disabled) {
+      border: $secondary 2px solid;
+      border-radius: 8px;
+      box-shadow: none;
+
+      &:hover {
+        color: $secondary;
+        background-color: white;
+        border: $secondary 2px solid;
+      }
+    }
+  }
 }
