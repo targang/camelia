@@ -1,4 +1,5 @@
 import json
+import xml.etree.ElementTree as ET
 
 from flask import jsonify, render_template, request, send_from_directory, session
 from flask_babelex import Babel
@@ -6,6 +7,8 @@ from flask_babelex import Babel
 from . import app
 from .forms import AddToCartForm, CheckoutForm, LoginForm, RegisterForm
 from .models import Product
+from .services.shiptor import sh
+from app.helpers import pack_boxes
 
 babel = Babel(app)
 
@@ -38,7 +41,7 @@ def shop():
     return send_from_directory("./frontend/dist/", "shop.html")
 
 
-@app.route("/get_products")
+@app.route("/shop/all")
 def get_products():
     products = Product.query.all()
     data = {"products": []}
@@ -95,7 +98,6 @@ def add_to_cart():
         session.modified = True
     else:
         session["cart"] = {product_id: product_count}
-    cart = session["cart"]
     return (
         jsonify({"status": "success", "data": {"count": str(len(session["cart"]))}}),
         200,
@@ -143,6 +145,73 @@ def checkout():
         cart[key] = {"title": title, "price": price, "count": value}
         total += int(price) * int(value)
     return render_template("checkout.html", cart=cart, total=total, form=form)
+
+
+@app.route("/checkout/get_countries")
+def get_countries():
+    tree = ET.parse("app/static/countryList.xml")
+    root = tree.getroot()
+    country_list = []
+
+    for country in root.findall("country"):
+        country_list.append(
+            {"code": country.find("alpha2").text, "name": country.find("name").text}
+        )
+
+    return jsonify({"status": "success", "data": {"countryList": country_list}})
+
+
+@app.route("/checkout/get_cities")
+def get_cities():
+    query = request.args.get("query")
+
+    if len(query) < 2:
+        return jsonify({"status": "fail", "data": {"query": "query is required"}})
+
+    cities = [
+        {
+            "name": city["name"],
+            "administrativeArea": city["administrative_area"],
+            "kladrId": city["kladr_id"],
+        }
+        for city in sh.suggest_settlement(query)
+    ]
+    return jsonify({"status": "success", "data": {"cities": cities}})
+
+
+@app.route("/checkout/calculate_shipping", methods=["POST"])
+def calculate_shipping():
+    content = json.loads(request.data)
+    city = content["city"]
+
+    sizes = []
+    weight = 0
+    cod = 0
+
+    for id_, count in session["cart"].items():
+        product = Product.query.get(id_)
+
+        for _ in range(count):
+            sizes.append((product.length, product.width, product.height))
+
+        weight += product.weight * count
+        cod += product.price * count
+
+    boxsize = pack_boxes(sizes)
+
+    calculated = sh.calculate_shipping(
+        boxsize[0], boxsize[1], boxsize[2], weight, cod, city
+    )
+
+    data = [
+        {
+            "name": method["method"]["name"].replace("ПВЗ - ", ""),
+            "cost": method["cost"]["total"]["readable"],
+            "days": method["days"],
+        }
+        for method in calculated
+    ]
+    return jsonify({"status": "success", "data": data}), 200
 
 
 @app.route("/")

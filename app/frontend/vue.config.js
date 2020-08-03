@@ -19,19 +19,19 @@ module.exports = {
       filename: 'cart.html',
       title: 'Корзина | Camelia Flowers',
     },
+    checkout: {
+      entry: 'src/pages/checkout/main.js',
+      template: 'public/index.html',
+      filename: 'checkout.html',
+      title: 'Оформление заказа | Camelia Flowers',
+    },
   },
   devServer: {
     proxy: {
-      '^/checkout': {
-        target: 'http://127.0.0.1:5000',
-      },
-      '^/auth': {
-        target: 'http://127.0.0.1:5000',
-      },
       '^/static': {
         target: 'http://127.0.0.1:5000',
       },
-      '^/get_products': {
+      '^/shop/all': {
         target: 'http://127.0.0.1:5000',
       },
       '^/cart/length': {
@@ -44,6 +44,15 @@ module.exports = {
         target: 'http://127.0.0.1:5000',
       },
       '^/cart/remove': {
+        target: 'http://127.0.0.1:5000',
+      },
+      '^/checkout/get_countries': {
+        target: 'http://127.0.0.1:5000',
+      },
+      '^/checkout/get_cities': {
+        target: 'http://127.0.0.1:5000',
+      },
+      '^/checkout/calculate_shipping': {
         target: 'http://127.0.0.1:5000',
       },
     },

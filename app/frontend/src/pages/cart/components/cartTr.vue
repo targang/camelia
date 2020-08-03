@@ -66,9 +66,9 @@ export default {
         method: 'POST',
         body: JSON.stringify({ productId: this.productId.toString() }),
       })
-        .then((responce) => {
-          if (!responce.ok) throw Error(responce.statusText);
-          return responce.json();
+        .then((response) => {
+          if (!response.ok) throw Error(response.statusText);
+          return response.json();
         })
         .then((data) => {
           // Вызываем событие delete-click
@@ -106,8 +106,8 @@ export default {
           productCount: dif.toString(),
         }),
       })
-        .then((responce) => {
-          if (!responce.ok) throw Error(responce.statusText);
+        .then((response) => {
+          if (!response.ok) throw Error(response.statusText);
         })
         .then(() => {
           this.$emit('count-change', { id: this.productId, count: after });
@@ -121,7 +121,7 @@ export default {
 
 <style lang="scss" scoped>
 .cart-count-field {
-  width: 80px !important;
+  width: 60px !important;
 }
 .fadeout {
   &-enter-active,

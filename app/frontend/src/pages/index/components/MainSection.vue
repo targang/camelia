@@ -14,22 +14,18 @@
               <h1>Camelia Flowers Soft</h1>
             </div>
             <div class="py-2">
-              <h4>
+              <p class="font-weight-normal">
                 Зефирная глина для лепки цветов
-              </h4>
-            </div>
-            <div class="py-2">
-              <h4>
+              </p>
+              <p class="font-weight-normal">
                 (полимерная, самозатвердевающая)
-              </h4>
+              </p>
             </div>
+            <a href="/shop" class="btn btn-primary text-uppercase"
+              >Перейти в каталог</a
+            >
           </div>
         </div>
-      </div>
-      <div class="mt-4">
-        <a href="/shop" class="btn btn-primary text-uppercase"
-          >Перейти в каталог</a
-        >
       </div>
     </div>
   </div>
@@ -40,5 +36,8 @@
   width: 90%;
   max-width: 650px;
   max-height: 650px;
+}
+p {
+  font-size: 1.3rem;
 }
 </style>

@@ -8001,6 +8001,11 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-single-select@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vue-single-select/-/vue-single-select-1.1.0.tgz#850a3339037925e16a08e9c1fb06d0e0937dc78a"
+  integrity sha512-9eZ6p58wAqMABiDj3bwx+FdYAsGf/t6cwN9nWg1IFwywS+gmKAj3aeHzLZXj47HiufXzN7ey+7Ps4UrIodUTjQ==
+
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npm.taobao.org/vue-style-loader/download/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"

@@ -68,8 +68,8 @@ export default {
           productCount: this.count.toString(),
         }),
       })
-        .then((responce) => {
-          return responce.json();
+        .then((response) => {
+          return response.json();
         })
         .then((data) => {
           this.$emit('submit-add', data.data.count);

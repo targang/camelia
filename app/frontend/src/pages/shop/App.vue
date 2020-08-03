@@ -1,9 +1,10 @@
+
 <template>
   <div id="app">
     <base-navbar :count="cartCount" />
 
-    <section class="container py-4">
-      <h2 class="mb-4">Магазин</h2>
+    <section class="container pt-5 py-4">
+      <h2 class="mb-2">Магазин</h2>
 
       <div class="row py-md-4">
         <product-card
@@ -12,7 +13,7 @@
           :title="product.title"
           :product-id="parseInt(product.id)"
           :price="parseInt(product.price)"
-          :key="product.vendorCode"
+          :key="`product-${product.vendorCode}`"
           @buy-click="buyClick"
         />
       </div>
@@ -68,15 +69,15 @@ export default {
   },
   created() {
     fetch('/cart/length')
-      .then((responce) => {
-        return responce.json();
+      .then((response) => {
+        return response.json();
       })
       .then((data) => {
         this.cartCount = parseInt(data.data.count);
       });
-    fetch('/get_products')
-      .then((responce) => {
-        return responce.json();
+    fetch('/shop/all')
+      .then((response) => {
+        return response.json();
       })
       .then((data) => {
         this.products = data.data.products;
@@ -87,6 +88,6 @@ export default {
 
 <style lang="scss">
 #app {
-  padding-top: 108px;
+  padding-top: 91px;
 }
 </style>

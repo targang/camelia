@@ -4,12 +4,12 @@
     :class="{ 'navbar-hide': !showNavbar }"
   >
     <div class="container">
-      <div class="navbar-brand flex-column">
-        <a class="navbar-brand" href="/">
+      <div class="navbar-brand flex-column py-none">
+        <a class="navbar-brand py-0" href="/">
           <h3>Camelia Flowers</h3>
         </a>
-        <hr class="my-0" />
-        <small class="font-italic d-inline-block d-lg-none">
+        <hr class="my-0 d-none d-lg-block" />
+        <small class="font-italic d-block d-lg-none">
           <a
             class="navbar-icon mx-2 facebook-icon"
             href="https://www.facebook.com/safneaflowers"
@@ -194,7 +194,7 @@ export default {
   bottom: 6px;
 }
 .navbar {
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
   &-hide {
     transform: translateY(-100%);
   }

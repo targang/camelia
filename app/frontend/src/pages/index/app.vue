@@ -63,8 +63,8 @@ export default {
   },
   created() {
     fetch('/cart/length')
-      .then((responce) => {
-        return responce.json();
+      .then((response) => {
+        return response.json();
       })
       .then((data) => {
         this.cartCount = parseInt(data.data.count);
@@ -75,7 +75,7 @@ export default {
 
 <style lang="scss">
 #app {
-  padding-top: 108px;
+  padding-top: 91px;
 }
 
 $primary-col: #800000;

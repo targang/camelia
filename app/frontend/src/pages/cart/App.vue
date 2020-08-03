@@ -2,7 +2,7 @@
   <div id="app">
     <base-navbar :count="cartCount" />
 
-    <section class="container py-4" v-if="cartCount">
+    <section class="container pt-5 py-4" v-if="cartCount">
       <h2>Корзина</h2>
 
       <div class="table-responsive my-4">
@@ -167,15 +167,15 @@ export default {
   },
   created() {
     fetch('/cart/length')
-      .then((responce) => {
-        return responce.json();
+      .then((response) => {
+        return response.json();
       })
       .then((data) => {
         this.cartCount = parseInt(data.data.count);
       });
     fetch('/cart/items')
-      .then((responce) => {
-        return responce.json();
+      .then((response) => {
+        return response.json();
       })
       .then((data) => {
         this.cartItems = data.data;
@@ -186,6 +186,6 @@ export default {
 
 <style lang="scss">
 #app {
-  padding-top: 108px;
+  padding-top: 91px;
 }
 </style>

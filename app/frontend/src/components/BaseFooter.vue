@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="top-footer">
-      <div class="container py-5">
+      <div class="container py-4">
         <div class="row">
           <div class="col-sm-6 col-md-3">
             <a class="footer-link" href="/howto_checkout">Как оформить заказ</a
@@ -45,6 +45,12 @@ export default {
 </script>
 
 <style lang="scss">
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
 .top-footer {
   background-color: #313131;
 }
