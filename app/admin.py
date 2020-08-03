@@ -24,6 +24,10 @@ class ProductView(ModelView):
         "description": "Описание",
         "price": "Цена",
         "weight": "Вес",
+        "category": "Категория",
+        "length": "Длина",
+        "width": "Ширина",
+        "height": "Высота",
     }
 
     def _change_path_data(self, _form):
@@ -52,5 +56,5 @@ class ProductView(ModelView):
         return self._change_path_data(super(ProductView, self).create_form(obj))
 
 
-admin.add_view(ProductView(Product, db.session, name="Товары"))
-admin.add_view(ModelView(Category, db.session, name="Категории"))
+admin.add_view(ProductView(Product, db.session, name="Товары", category="Магазин"))
+admin.add_view(ModelView(Category, db.session, name="Категории", category="Магазин"))
