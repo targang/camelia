@@ -1,12 +1,29 @@
 .facebook-icon {
   color: #4267b2 !important;
+  &:hover,
+  &:focus {
+    color: darken($color: #4267b2, $amount: 20%) !important;
+  }
 }
 .instagram-icon {
   color: #fb3958 !important;
+
+  &:hover,
+  &:focus {
+    color: darken($color: #fb3958, $amount: 20%) !important;
+  }
 }
 .vk-icon {
   color: #4680c2 !important;
+  &:hover,
+  &:focus {
+    color: darken($color: #4680c2, $amount: 20%) !important;
+  }
 }
 .whatsapp-icon {
   color: #25d366 !important;
+  &:hover,
+  &:focus {
+    color: darken($color: #25d366, $amount: 20%) !important;
+  }
 }
