@@ -1,4 +1,3 @@
-
 <template>
   <div id="app">
     <base-navbar :count="cartCount" />

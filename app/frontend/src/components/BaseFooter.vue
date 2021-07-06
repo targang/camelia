@@ -24,14 +24,10 @@
     </div>
     <div class="bottom-footer">
       <div class="container py-3" style="color: #777777;font-size: small;">
-        <p style="margin-bottom: 10px;">
+        <p style="margin-bottom: 10px;font-size: 14px;">
           © 2020
           <a class="footer-link" href="/">Camelia Flowers</a>
           – Все права защищены
-        </p>
-        <p style="margin-bottom: 10px;">
-          Designed by
-          <a class="footer-link" href="https://sverstaem.site/">Amema Studio</a>
         </p>
       </div>
     </div>
