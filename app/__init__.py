@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 
 from flask import Flask
@@ -16,16 +15,3 @@ app.config["FLASK_ADMIN_SWATCH"] = "flatly"
 from .admin import *
 from .models import *
 from .views import *
-=======
-from flask import Flask
-
-app = Flask(__name__)
-
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
-app.config["SECRET_KEY"] = "key_secrtr"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
-
-from .admin import *
-from .models import *
-from .views import *
->>>>>>> master
