@@ -1,0 +1,103 @@
+.navbar-toggler:focus {
+  outline: none;
+}
+.btn.disabled {
+  cursor: default;
+}
+.btn-primary,
+.btn-secondary {
+  border-radius: 8px;
+}
+.btn-primary:not(:disabled):not(.disabled),
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #800000;
+  border: #800000 2px solid;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.btn-primary:not(:disabled):not(.disabled):hover {
+  color: #800000;
+  background-color: white;
+  border: #800000 2px solid;
+}
+.btn-secondary:not(:disabled):not(.disabled),
+.btn-secondary:not(:disabled):not(.disabled):active {
+  background-color: #5a6a68;
+  border: #5a6a68 2px solid;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.btn-secondary:not(:disabled):not(.disabled):hover,
+.btn-secondary:not(:disabled):not(.disabled):focus {
+  color: #5a6a68;
+  background-color: white;
+  border: #5a6a68 2px solid;
+}
+.navbar {
+  transition: top 0.5s ease;
+}
+.navbar-hide {
+  top: -108px;
+}
+.parallax-img {
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.footer-link {
+  color: #777777;
+  font-size: small;
+}
+.footer-link:hover {
+  color: #ffffff;
+}
+.recommend-img {
+  width: 158px;
+  padding: 4px;
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+.product-img {
+  max-width: 400px;
+}
+.cart-count-field {
+  width: 60px;
+}
+@media screen and (min-width: 768px) {
+  .shadow-md {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+}
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #aaaaaa;
+}
+@media screen and (min-width: 991.98px) {
+  .nav-primary-link {
+    position: relative;
+  }
+  .nav-primary-link:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 5px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  .nav-primary-link:hover:after {
+    width: 100%;
+    left: 0;
+  }
+}

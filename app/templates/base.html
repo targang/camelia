@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ru-ru">
 
@@ -160,4 +161,168 @@
     {% endblock scripts %}
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="ru-ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}
+
+        {% endblock title %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block head %}
+
+    {% endblock head %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <div class="navbar-brand flex-column">
+                <a class="navbar-brand" href="/">
+                    <h3>Camelia Flowers</h3>
+                </a>
+                <hr class="my-0">
+                <small class="font-italic d-inline-block d-lg-none">
+                    <a href="#"><i class="fa fa-facebook text-primary"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#"><i class="fa fa-instagram text-danger"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#"><i class="fa fa-vk text-info"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#"><i class="fa fa-whatsapp text-success"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#"><i class="fa fa-phone text-dark"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="#"><i class="fa fa-envelope text-dark"></i></a>&nbsp;&nbsp;&nbsp;
+                </small>
+                <small class="font-italic d-none d-lg-inline-block">Творить может каждый!</small>
+            </div>
+
+            <button class="navbar-toggler navbar-toggler-right align-self-center border-0" type="button"
+                data-toggle="collapse" data-target="#navbarCollapse" style="position: relative;">
+                <span class="navbar-toggler-icon"></span>
+                <div id="nav-noti" style="width: 8px;height:8px;position: absolute;right: 12px;bottom: 6px;"
+                    class="rounded-circle bg-danger {% if not cart_count %}d-none{% endif %}"></div>
+            </button>
+            <div class="collapse navbar-collapse flex-column ml-lg-0 ml-3 mt-1 mt-lg-0" id="navbarCollapse">
+                <div class="flex-column ml-auto">
+                    <ul class="navbar-nav flex-row d-none d-lg-flex mb-lg-2">
+                        <li class="nav-item">
+                            <a class="nav-link py-1 pr-3" href="#"><i class="fa fa-facebook text-primary"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link py-1 pr-3" href="#"><i class="fa fa-instagram text-danger"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link py-1 pr-3" href="#"><i class="fa fa-vk text-info"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link py-1 pr-3" href="#"><i class="fa fa-whatsapp text-success"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link py-1 pr-3" href="#">shop@camelia-flowers.ru</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link py-1 pr-3" href="#">+7 905 025-34-85</a>
+                        </li>
+                        <li class="nav-item disabled">
+                            <a class="nav-link py-1 pr-3" href="#">Пн-Пт 8.00-17.00</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav justify-content-around mt-lg-2">
+                        <li class="nav-item {% block shop_active %}{% endblock shop_active %}">
+                            <a class="nav-link nav-primary-link font-weight-bolder text-uppercase"
+                                href="{{ url_for('shop') }}">Магазин</a>
+                        </li>
+                        <li class="nav-item {% block cart_active %}{% endblock cart_active %}">
+                            <a class="nav-link nav-primary-link font-weight-bolder text-uppercase" href="{{ url_for('cart') }}">Корзина
+                                <span class="badge badge-pill badge-danger"
+                                    id="cart-count">{% if cart_count %}{{ cart_count }}{% endif %}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {% block order_active %}{% endblock order_active %}">
+                            <a class="nav-link nav-primary-link font-weight-bolder text-uppercase"
+                                href="{{ url_for('checkout') }}">Оформление заказа</a>
+                        </li>
+                        <li class="nav-item {% block cabinet_active %}{% endblock cabinet_active %}">
+                            <a class="nav-link nav-primary-link font-weight-bolder text-uppercase" href="{{ url_for('auth') }}">Личный
+                                кабинет</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        {% block main %}
+
+        {% endblock main %}
+    </main>
+    <footer class="footer">
+        <div style="background-color: #313131;">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <a class="footer-link" href="{{ url_for('howto') }}">Как оформить заказ</a><br>
+                        <a class="footer-link" href="{{ url_for('delivery_terms') }}">Условия доставки</a><br>
+                        <a class="footer-link" href="{{ url_for('return_conditions') }}">Условия возврата</a><br>
+                    </div>
+                    <div class="col-sm-6 col-md-9">
+                        <a class="footer-link" href="{{ url_for('public_offer') }}">Публичная оферта</a><br>
+                        <a class="footer-link" href="{{ url_for('privacy_policy') }}">Положение об обработке
+                            персональных данных</a><br>
+                        <a class="footer-link" href="{{ url_for('concent') }}">Согласие</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #282828;">
+            <div class="container py-3" style="color: #777777;font-size: small;">
+                <p style="margin-bottom: 10px;">© 2020 <a class="footer-link" href="{{ url_for('index') }}">Camelia
+                        Flowers</a> – Все права
+                    защищены</p>
+                <p style="margin-bottom: 10px;">Designed by <a class="footer-link" href="#">Amema Studio</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        $(window).on('load', function () {
+            if ($(document).height() <= $(window).height())
+                $("footer.footer").addClass("fixed-bottom");
+        });
+    </script>
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    </script>
+    <!--<script type="text/javascript">
+        var csrf_token = "{# csrf_token() #}";
+    
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrf_token);
+                }
+            }
+        });
+    </script>-->
+    {% block scripts %}
+
+    {% endblock scripts %}
+</body>
+
+>>>>>>> master
 </html>

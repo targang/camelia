@@ -13,7 +13,11 @@ params = {
     "height": "20",
     "width": "40",
     "depth": "30",
+<<<<<<< HEAD
     "paysum": "100",
+=======
+    "paysum": "100"
+>>>>>>> master
 }
 
 payload = {}
